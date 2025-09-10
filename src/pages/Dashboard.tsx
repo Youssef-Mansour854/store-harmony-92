@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useAuth } from "@/hooks/useAuth";
 import { 
   BarChart3, 
   Package, 
@@ -9,17 +10,42 @@ import {
   TrendingUp, 
   TrendingDown,
   DollarSign,
-  AlertTriangle
+  AlertTriangle,
+  LogOut,
+  User
 } from "lucide-react";
 
 const Dashboard = () => {
+  const { user, signOut } = useAuth();
+
   return (
-    <div className="space-y-8">
-      {/* Welcome Section */}
-      <div>
-        <h1 className="text-3xl font-bold">لوحة التحكم</h1>
-        <p className="text-muted-foreground">مرحباً بك في متجر الأمانة</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+        <div className="container flex h-16 items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <Package className="h-6 w-6 text-primary" />
+            <span className="text-xl font-bold">StoreManager Pro</span>
+          </div>
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 text-sm">
+              <User className="h-4 w-4" />
+              <span>{user?.user_metadata?.full_name || user?.email || 'المستخدم'}</span>
+            </div>
+            <Button variant="ghost" size="sm" onClick={signOut}>
+              <LogOut className="h-4 w-4 ml-2" />
+              تسجيل الخروج
+            </Button>
+          </div>
+        </div>
+      </header>
+
+      <div className="container py-8 space-y-8">
+        {/* Welcome Section */}
+        <div>
+          <h1 className="text-3xl font-bold">لوحة التحكم</h1>
+          <p className="text-muted-foreground">مرحباً بك في متجر الأمانة</p>
+        </div>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -188,6 +214,7 @@ const Dashboard = () => {
           </div>
         </CardContent>
       </Card>
+      </div>
     </div>
   );
 };

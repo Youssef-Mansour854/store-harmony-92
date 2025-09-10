@@ -15,10 +15,10 @@ const Landing = () => {
             <span className="text-xl font-bold">StoreManager Pro</span>
           </div>
           <div className="flex items-center space-x-4">
-            <Link to="/login">
+            <Link to="/auth">
               <Button variant="ghost">تسجيل الدخول</Button>
             </Link>
-            <Link to="/register">
+            <Link to="/auth">
               <Button>إنشاء حساب جديد</Button>
             </Link>
           </div>
@@ -39,7 +39,7 @@ const Landing = () => {
             نظام متكامل لإدارة المنتجات والمبيعات والمخزون مع تقارير تفصيلية وباركود للمنتجات
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/register">
+            <Link to="/auth">
               <Button size="lg" className="text-lg px-8">
                 ابدأ الآن مجاناً
               </Button>
@@ -132,7 +132,7 @@ const Landing = () => {
           <p className="text-muted-foreground text-lg mb-8">
             ابدأ الآن واكتشف الفرق مع نظام إدارة المتاجر الأكثر تطوراً
           </p>
-          <Link to="/register">
+          <Link to="/auth">
             <Button size="lg" className="text-lg px-8">
               ابدأ رحلتك الآن
             </Button>
